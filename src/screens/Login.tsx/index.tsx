@@ -5,8 +5,14 @@ import Utils from '../../common/utils'
 import Button from '../../Component/Button'
 import Inputbox from '../../Component/inputbox'
 import Backbutton from '../../Component/backbutton'
+import { useNavigation } from '@react-navigation/native'
+import { RootStackParamList } from '../../Navigation/Rootstack'
 
 const Login = () => {
+    const navigation=useNavigation<RootStackParamList>();
+    const handellogin=()=>{
+        navigation.navigate('Getstarted')
+    }
   return (
     <View style={style.container}>
         <View style={{alignItems:'center'}}>
@@ -30,7 +36,7 @@ const Login = () => {
             </Text>
             </Text>
 
-            <Button title='Login' />
+            <Button title='Login' onPress={handellogin} />
         </View>
     </View>
   )

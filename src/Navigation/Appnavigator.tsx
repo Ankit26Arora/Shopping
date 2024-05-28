@@ -1,34 +1,36 @@
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
-import {RootStackParamList} from './Rootstack';
+import { RootStackParamList } from './Rootstack';
 import Home from '../screens/Botoomtabpages/Home';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Order from '../screens/Botoomtabpages/Order';
-import Notificaion from '../screens/Botoomtabpages/Notification';
+import Notification from '../screens/Botoomtabpages/Notification';
 import Profile from '../screens/Botoomtabpages/Profile';
-import {Image, StyleSheet} from 'react-native';
+import { Image, StyleSheet } from 'react-native';
 import Appimages from '../Theme/Appimages';
 import Utils from '../common/utils';
 import Splashscreen from '../screens/Splashscreen';
 import Signin from '../screens/Signin';
+import Getstarted from '../screens/Getstarted';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 import Login from '../screens/Login.tsx';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 const Tab = createBottomTabNavigator<RootStackParamList>();
+const Drawer = createDrawerNavigator<RootStackParamList>();
+
 const AppNavigator = () => {
   return (
     <Stack.Navigator
       initialRouteName="Splashscreen"
-      screenOptions={{headerShown: false}}>
+      screenOptions={{ headerShown: false }}>
       <Stack.Screen
         name="Splashscreen"
         component={Splashscreen}
-        options={{headerShown: false}}
+        options={{ headerShown: false }}
       />
       <Stack.Screen name="Signup" component={Signupnavigator} />
-
-      <Stack.Screen name="Bottom" component={BottomTabs} />
-
+      <Stack.Screen name="Drawer" component={DrawerNavigator} />
     </Stack.Navigator>
   );
 };
@@ -41,7 +43,7 @@ const BottomTabs = () => {
         tabBarActiveTintColor: 'blue',
       }}>
       <Tab.Screen
-        name="HomeStackNavigation"
+        name="Home"
         component={Home}
         options={{
           title: 'Home',
@@ -61,7 +63,7 @@ const BottomTabs = () => {
       />
       <Tab.Screen
         name="Notification"
-        component={Notificaion}
+        component={Notification}
         options={{
           tabBarIcon: () => {
             return <Image style={styles.img} source={Appimages.notification} />;
@@ -83,15 +85,24 @@ const BottomTabs = () => {
 
 const Signupnavigator = () => {
   return (
-    <Stack.Navigator screenOptions={{headerShown: false}}>
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="Signin" component={Signin} />
-      <Stack.Screen name="Login" component={Login}/>
+      <Stack.Screen name="Login" component={Login} />
+      <Stack.Screen name="Getstarted" component={Getstarted} />
     </Stack.Navigator>
+  );
+};
+
+const DrawerNavigator = () => {
+  return (
+    <Drawer.Navigator>
+      <Drawer.Screen name="BottomTabs" component={BottomTabs} />
+    </Drawer.Navigator>
   );
 };
 
 export default AppNavigator;
 
 const styles = StyleSheet.create({
-  img: {width: Utils.widthScaleSize(24), height: Utils.heightScaleSize(24)},
+  img: { width: Utils.widthScaleSize(24), height: Utils.heightScaleSize(24) },
 });
