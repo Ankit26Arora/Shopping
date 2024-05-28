@@ -30,7 +30,8 @@ const AppNavigator = () => {
         options={{ headerShown: false }}
       />
       <Stack.Screen name="Signup" component={Signupnavigator} />
-      <Stack.Screen name="Drawer" component={DrawerNavigator} />
+      <Stack.Screen name="Bottom" component={BottomTabs} />
+      {/* <Stack.Screen name="Drawer" component={DrawerNavigator} /> */}
     </Stack.Navigator>
   );
 };
@@ -46,7 +47,7 @@ const BottomTabs = () => {
         name="Home"
         component={Home}
         options={{
-          title: 'Home',
+          headerShown:false,
           tabBarIcon: () => {
             return <Image style={styles.img} source={Appimages.Home} />;
           },
