@@ -1,19 +1,20 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'; // Import TouchableOpacity
-import { DrawerActions } from '@react-navigation/native'; // Import DrawerActions for drawer navigation
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'; 
+import { DrawerActions, useNavigation } from '@react-navigation/native';
+import { RootStackParamList } from '../../Navigation/Rootstack';
 
 interface MenuProps {
   leftIcon?: React.ReactNode;
   title?: string;
   rightIcon?: React.ReactNode;
-  onPressLeft?: () => void; // Add onPressLeft prop
+  onPressLeft?: () => void; 
 }
 
 const Menu: React.FC<MenuProps> = ({ leftIcon, title, rightIcon, onPressLeft }) => {
   if (!leftIcon && !title && !rightIcon) {
     return null; 
   }
-
+const navigation=useNavigation<RootStackParamList>();
   return (
     <View style={styles.container}>
       {leftIcon && (
@@ -22,7 +23,7 @@ const Menu: React.FC<MenuProps> = ({ leftIcon, title, rightIcon, onPressLeft }) 
         </TouchableOpacity>
       )}
       {title && <Text style={styles.title}>{title}</Text>}
-      {rightIcon && <View style={styles.iconContainer}>{rightIcon}</View>}
+      {rightIcon && <TouchableOpacity style={styles.iconContainer}>{rightIcon}</TouchableOpacity>}
     </View>
   );
 };
@@ -37,7 +38,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
   },
   title: {
-    color: '#fff', // This might need adjustment based on your theme
+    color: '#fff', 
     fontSize: 20,
     textAlign: 'center',
     flex: 1,
