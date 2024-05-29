@@ -19,7 +19,7 @@ import {
     const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   
     const handleSkip = () => {
-      navigation.navigate('Bottom');
+      navigation.navigate('Drawer');
     };
   
     return (

@@ -15,15 +15,9 @@ const Home = () => {
         hidden={false}
         translucent={true} 
       />
-      <View style={{ marginTop: '8%',width:'95%',alignSelf:'center' }}>
-        <Menu 
-          leftIcon={<AntDesign name="menuunfold" size={30} color="black" />}
-          rightIcon={<Ionicons name="md-search" size={30} />}
-        />
-      </View>
       <View style={{width:'90%',alignSelf:'center'}}>
-        <Text style={style.name}>{'Ankit'}</Text>
-        <Text>Welcone in Ankit Arora app</Text>
+        <Text style={style.name}>{'HELLO ANKIT'}</Text>
+        {/* <Text>Welcone in Ankit Arora app</Text> */}
         {/* <Search searchtitle='Search' width={0} /> */}
       </View>
     </View>

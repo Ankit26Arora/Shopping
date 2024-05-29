@@ -14,6 +14,9 @@ import Signin from '../screens/Signin';
 import Getstarted from '../screens/Getstarted';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import Login from '../screens/Login.tsx';
+import Menu from '../Component/Menu/index.tsx';
+import AntDesign from 'react-native-vector-icons/AntDesign.js'
+import FontAwesome from 'react-native-vector-icons/FontAwesome5.js'
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 const Tab = createBottomTabNavigator<RootStackParamList>();
@@ -30,8 +33,8 @@ const AppNavigator = () => {
         options={{ headerShown: false }}
       />
       <Stack.Screen name="Signup" component={Signupnavigator} />
-      <Stack.Screen name="Bottom" component={BottomTabs} />
-      {/* <Stack.Screen name="Drawer" component={DrawerNavigator} /> */}
+      {/* <Stack.Screen name="Bottom" component={BottomTabs} /> */}
+      <Stack.Screen name="Drawer" component={DrawerNavigator} />
     </Stack.Navigator>
   );
 };
@@ -97,7 +100,12 @@ const Signupnavigator = () => {
 const DrawerNavigator = () => {
   return (
     <Drawer.Navigator>
-      <Drawer.Screen name="BottomTabs" component={BottomTabs} />
+      <Drawer.Screen name="BottomTabs" component={BottomTabs} options={{
+          header: () => <Menu
+          leftIcon={<AntDesign name="menuunfold" size={30} color="black" />}
+          rightIcon={<FontAwesome name='shopping-bag' size={25} />}
+          />, 
+        }} />
     </Drawer.Navigator>
   );
 };
