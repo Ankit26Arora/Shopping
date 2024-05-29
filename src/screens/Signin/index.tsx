@@ -1,4 +1,4 @@
-import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import React from 'react';
 import Button from '../../Component/Button';
 import Feather from 'react-native-vector-icons/Feather';
@@ -9,8 +9,8 @@ import { useNavigation } from '@react-navigation/native';
 import { RootStackParamList } from '../../Navigation/Rootstack';
 
 const Signin = () => {
-  const navigation=useNavigation<RootStackParamList>();
-  const handellogin=()=>{
+  const navigation = useNavigation<RootStackParamList>();
+  const handellogin = () => {
     navigation.navigate("Login")
   }
   return (
@@ -18,7 +18,7 @@ const Signin = () => {
       <View>
         <Text style={style.text}>Let's Get Started</Text>
       </View>
-      <View style={{width: '90%'}}>
+      <View style={{ width: '90%' }}>
         <Button
           title="Facebook"
           backgroundColor="#4267B2"
@@ -27,7 +27,7 @@ const Signin = () => {
               name="facebook"
               size={20}
               color="#fff"
-              style={{marginTop: '2%'}}
+              style={{ marginTop: '2%' }}
             />
           }
         />
@@ -40,7 +40,7 @@ const Signin = () => {
               name="twitter"
               size={20}
               color="#fff"
-              style={{marginTop: '2%'}}
+              style={{ marginTop: '2%' }}
             />
           }
         />
@@ -53,20 +53,20 @@ const Signin = () => {
               name="google"
               size={20}
               color="#fff"
-              style={{marginTop: '2%'}}
+              style={{ marginTop: '2%' }}
             />
           }
         />
       </View>
       <View style={style.accbutton}>
-        <View>
+        <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
           <Text
-            style={{textAlign: 'center', color: 'black,', marginBottom: 20}}>
+            style={{ textAlign: 'center', color: 'black,', marginBottom: 20 }}>
             Already have an account?
-            <TouchableOpacity onPress={handellogin}>
-              <Text style={{fontWeight: 'bold', color: 'black',}}> Signin</Text>
-            </TouchableOpacity>
           </Text>
+          <TouchableOpacity onPress={handellogin}>
+            <Text style={{ fontWeight: 'bold', color: 'black' }}> Signin</Text>
+          </TouchableOpacity>
         </View>
 
         <Button title="Create an Account" />
