@@ -7,18 +7,29 @@ interface MenuProps {
   leftIcon?: React.ReactNode;
   title?: string;
   rightIcon?: React.ReactNode;
-  onPressLeft?: () => void; 
+  leftIconType?: 'menuunfold' | 'goback';
 }
 
-const Menu: React.FC<MenuProps> = ({ leftIcon, title, rightIcon, onPressLeft }) => {
+const Menu: React.FC<MenuProps> = ({ leftIcon, title, rightIcon, leftIconType }) => {
+  const navigation = useNavigation<RootStackParamList>();
+
+  const handleLeftIconPress = () => {
+    if (leftIconType === 'menuunfold') {
+      navigation.openDrawer();
+      console.log('clicked on menu')
+    } else if (leftIconType === 'goback') {
+      navigation.goBack();
+    }
+  };
+
   if (!leftIcon && !title && !rightIcon) {
     return null; 
   }
-const navigation=useNavigation<RootStackParamList>();
+
   return (
     <View style={styles.container}>
       {leftIcon && (
-        <TouchableOpacity onPress={onPressLeft} style={styles.iconContainer}>
+        <TouchableOpacity onPress={handleLeftIconPress} style={styles.iconContainer}>
           {leftIcon}
         </TouchableOpacity>
       )}
