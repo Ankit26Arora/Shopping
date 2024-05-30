@@ -17,6 +17,7 @@ import Login from '../screens/Login.tsx';
 import Menu from '../Component/Menu/index.tsx';
 import AntDesign from 'react-native-vector-icons/AntDesign.js'
 import FontAwesome from 'react-native-vector-icons/FontAwesome5.js'
+import CustomDrawerContent from './customdrawer.tsx';
 const Stack = createNativeStackNavigator<RootStackParamList>();
 const Tab = createBottomTabNavigator<RootStackParamList>();
 const Drawer = createDrawerNavigator<RootStackParamList>();
@@ -102,8 +103,9 @@ const DrawerNavigator = () => {
       leftIcon={<AntDesign name="menuunfold" size={30} color="black" />}
       rightIcon={<FontAwesome name='shopping-bag' size={25} />}
       leftIconType="menuunfold"
+      
       />, 
-    }} >
+    }}  drawerContent={props => <CustomDrawerContent {...props} />} >
     <Drawer.Screen name="BottomTabs" component={BottomTabs}  />
   </Drawer.Navigator>
   );
