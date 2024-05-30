@@ -14,6 +14,7 @@ import Signin from '../screens/Signin';
 import Getstarted from '../screens/Getstarted';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import Login from '../screens/Login.tsx';
+import CustomDrawerContent from './CustomDrawerContent.tsx';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 const Tab = createBottomTabNavigator<RootStackParamList>();
@@ -95,7 +96,7 @@ const Signupnavigator = () => {
 
 const DrawerNavigator = () => {
   return (
-    <Drawer.Navigator>
+    <Drawer.Navigator drawerContent={(props) => <CustomDrawerContent {...props} />}>
       <Drawer.Screen name="BottomTabs" component={BottomTabs} />
     </Drawer.Navigator>
   );
