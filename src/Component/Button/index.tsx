@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import React, { ReactNode } from 'react';
 import Appcolor from '../../Theme/Appcolor';
 import Utils from '../../common/utils';
@@ -7,15 +7,17 @@ interface ButtonProps {
   title?: string;
   marginTop?: number;
   backgroundColor?: string;
-  icon?: ReactNode; 
+  icon?: ReactNode;
+  onPress?: () => void;
+  color?:string;
 }
 
 const Button = (props: ButtonProps) => {
   return (
-    <View style={[styles.container, { marginTop: props.marginTop, backgroundColor: props.backgroundColor || Appcolor.themecolor }]}>
+    <TouchableOpacity onPress={props.onPress} style={[styles.container, { marginTop: props.marginTop, backgroundColor: props.backgroundColor || Appcolor.themecolor }]}>
       {props.icon}
-      <Text style={styles.button}>{props.title}</Text>
-    </View>
+      <Text style={[styles.button,{color:props.color || Appcolor.white}]}>{props.title}</Text>
+    </TouchableOpacity>
   );
 };
 
@@ -29,12 +31,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     height: Utils.heightScaleSize(55),
     borderRadius: Utils.scaleSize(8),
-    paddingHorizontal: Utils.scaleSize(10), 
+    paddingHorizontal: Utils.scaleSize(10),
   },
   button: {
     color: 'white',
     fontSize: Utils.scaleSize(20),
     fontWeight: '500',
-    marginLeft:'2%'
+    marginLeft: '2%',
   },
 });

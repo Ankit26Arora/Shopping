@@ -4,9 +4,9 @@ import Utils from '../../common/utils';
 import Appcolor from '../../Theme/Appcolor';
 
 interface SearchProps {
-    searchlabel: string;
-    searchtitle: string;
-    width: number;
+    searchlabel?: string;
+    searchtitle?: string;
+    width?: number;
     image?: any;
 }
 
